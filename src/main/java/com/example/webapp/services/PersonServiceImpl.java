@@ -5,7 +5,6 @@ import com.example.webapp.db.repo.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -15,12 +14,6 @@ public class PersonServiceImpl implements PersonService {
     PersonRepo personRepo;
 
     @Override
-    public Person createPerson(Person person) {
-        personRepo.save(person);
-        return person;
-    }
-
-    @Override
     public void deletePerson(Long id) {
         personRepo.deleteById(id);
     }
@@ -28,5 +21,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Optional<Person> getPerson(Long id) {
         return personRepo.findById(id);
+    }
+
+    @Override
+    public Iterable<Person> getPerson() {
+        return personRepo.findAll();
     }
 }
