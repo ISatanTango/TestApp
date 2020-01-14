@@ -7,6 +7,7 @@ import com.example.webapp.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -52,7 +53,7 @@ public class PersonController {
         return "index";
     }
 
-    @RequestMapping("delete-person/{id}")
+    @PostMapping("/delete-person/{id}")
     public void deletePerson(@PathVariable("id") Long id) {
         personService.deletePerson(id);
     }

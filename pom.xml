@@ -57,10 +57,23 @@
             </exclusions>
         </dependency>
         <!--Template-->
+
+        <!--Thymeleaf-->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!--Mustache-->
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mustache</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.sps.mustache</groupId>
+            <artifactId>mustache-spring-view</artifactId>
+            <version>1.4</version>
+        </dependency>-->
     </dependencies>
 
     <build>
