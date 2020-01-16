@@ -7,16 +7,16 @@ import com.example.webapp.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.util.Collections;
 import java.util.Optional;
 
 /*@RestController*/
-@Controller
-/*@RequestMapping(value = "", produces = "application/json")*/
+@Controller()
+@RequestMapping(value = "", produces = "application/json")
 public class PersonController {
 
     @Autowired
@@ -27,6 +27,7 @@ public class PersonController {
 
     @Autowired
     PersonRepo personRepo;
+
     @GetMapping("/registration")
     public String registration() {
         return "registration";
@@ -46,24 +47,41 @@ public class PersonController {
     @GetMapping("/")
     public String index(Principal principal)
     {
-        if(principal != null)
+        /*if(principal != null)
         {
             return "redirect:/notes";
-        }
+        }*/
         return "index";
+    }
+    /*@RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
+    }*/
+
+    @GetMapping("/Test")
+    public String test() {
+        return "Test";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
     @PostMapping("/delete-person/{id}")
     public void deletePerson(@PathVariable("id") Long id) {
+
         personService.deletePerson(id);
     }
 
-    @RequestMapping("get-person/{id}")
+    @GetMapping("get-person/{id}")
     public Optional<Person> getPerson(@PathVariable("id") Long id) {
         return personService.getPerson(id);
     }
 
-    @RequestMapping("get-persons")
+    @GetMapping("get-persons")
     public Iterable<Person> getPerson() {
         return personService.getPerson();
     }
