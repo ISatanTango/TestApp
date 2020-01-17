@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Welcome</title>
@@ -7,20 +7,18 @@
 </head>
 <body>
 <h1>Welcome</h1>
-<form action="/registration"
-      method="post">
-    <div>
-    Username:
-    <input type="text" name="username"/>
-    </div>
-    <div>
-    Password:
-    <input type="password" name="password"/>
-    </div>
-    <div><input type="submit" value="Registration"/></div>
-</form>
 
-<a th:href="@{/login}"/>Login page</a>
+<div>
+    <form method="post" action="/registration" modelAttribute="personForm">
+        <div><input type="text" placeholder="username" name="username"></div>
+        <div><input type="password" placeholder="password" name="password"></div>
+        <div><input type="password" placeholder="confirm password" name="passwordConfirm"></div>
+        <div><input type="submit" value="Reristration"></div>
+
+
+    </form>
+</div>
+<h4><a href="/login">Войти</a></h4>
 </body>
 
 </html>
