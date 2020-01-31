@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 @Service
-public class PersonService implements UserDetailsService {
+public class PersonServiceImpl implements UserDetailsService {
     @PersistenceContext
     private EntityManager entityManager;
     @Autowired

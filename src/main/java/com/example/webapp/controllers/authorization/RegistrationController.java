@@ -1,9 +1,8 @@
 package com.example.webapp.controllers.authorization;
 
 import com.example.webapp.db.model.authorization.Person;
-import com.example.webapp.services.authorization.PersonService;
+import com.example.webapp.services.authorization.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,7 +12,7 @@ import javax.validation.Valid;
 @RestController
 public class RegistrationController {
     @Autowired
-    private PersonService personService;
+    private PersonServiceImpl personService;
 
     @GetMapping("/registration")
     public ModelAndView registration(ModelAndView modelAndView) {

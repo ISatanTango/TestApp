@@ -1,7 +1,6 @@
 package com.example.webapp.config.authorization;
 
-import com.example.webapp.db.model.authorization.Role;
-import com.example.webapp.services.authorization.PersonService;
+import com.example.webapp.services.authorization.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +14,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import java.util.Collections;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -27,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    private PersonService personService;
+    private PersonServiceImpl personService;
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
