@@ -6,11 +6,11 @@ import com.example.webapp.services.authorization.ReservationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Date;
+import java.util.List;
 
 @RestController
 public class MainController {
@@ -27,6 +27,7 @@ public class MainController {
         modelAndView.setViewName("index");
         return modelAndView;
     }
+
     @Autowired
     MeetingRepo meetingRepo;
     @Autowired
@@ -38,5 +39,10 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         reservationService.saveMeeting(meeting, auth.getName());
         return "OK";
+    }
+
+    @GetMapping("/meeting")
+    public List<Meeting> showMeeting(@RequestParam ("week") int week) {
+        return reservationService.getMeetingForWeek(week);
     }
 }

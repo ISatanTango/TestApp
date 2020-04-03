@@ -10,18 +10,19 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/registration")
 public class RegistrationController {
     @Autowired
     private PersonServiceImpl personService;
 
-    @GetMapping("/registration")
+    @GetMapping
     public ModelAndView registration(ModelAndView modelAndView) {
         modelAndView.addObject("personForm", new Person());
         modelAndView.setViewName("registration");
         return modelAndView;
     }
 
-    @PostMapping("/registration")
+    @PostMapping
     public ModelAndView createPerson(@ModelAttribute("personForm") @Valid Person personForm,
                                      BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView("createPerson");

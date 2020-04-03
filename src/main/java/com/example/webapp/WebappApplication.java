@@ -1,5 +1,6 @@
 package com.example.webapp;
 
+import com.example.webapp.db.model.authorization.Person;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

@@ -36,6 +36,40 @@ public class Meeting {
     @DateTimeFormat(pattern = "HH:mm:ss")
     private Date endTime;
 
+    @Column(name = "week")
+    private int week;
+
+    @Column(name = "weekday")
+    private int weekday;
+
+    public int getWeek() {
+        return week;
+    }
+
+    public int getWeekday() {
+        return weekday;
+    }
+    // Установка дня недели
+    public void setWeekday() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(this.getDate());
+        // День недели в России в понедельника
+        weekday = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+        // Если воскресенье присвоить значени 7
+        if (weekday == 0) {
+            this.weekday = 7;
+        }
+    }
+    // Set number is week
+    public void setWeek() {
+        // Создание пустого объекта календарь
+        Calendar calendar = Calendar.getInstance();
+        // Получение даты
+        calendar.setTime(this.getDate());
+        // Получение номера недели в году
+        this.week = calendar.get(Calendar.WEEK_OF_YEAR);
+    }
+
     public Long getId() {
         return id;
     }

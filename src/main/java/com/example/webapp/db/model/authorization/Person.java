@@ -30,6 +30,7 @@ public class Person implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+
     public Long getId() {
         return id;
     }
