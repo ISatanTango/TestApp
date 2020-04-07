@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link th:href="@{/css/core.css}" rel="stylesheet" media="screen" />
+</head>
+<body>
+<div>
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>Initiator</th>
+            <th>Participant</th>
+            <th>Duration</th>
+        </tr>
+        <tr th:each ="meeting : ${meetings}">
+            <td th:utext="${meeting.Date}">...</td>
+            <td th:utext="${meeting.Initiator}">...</td>
+            <td th:utext="${meeting.Participant}">...</td>
+            <td th:utext="${meeting.Duration}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

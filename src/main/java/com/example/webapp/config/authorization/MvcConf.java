@@ -1,5 +1,7 @@
 package com.example.webapp.config.authorization;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -13,7 +15,13 @@ public class MvcConf implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/user").setViewName("user");
+        /*registry.addViewController("/user").setViewName("meeting");*/
+    }
+
+    // Layout Dialect
+    @Bean
+    public LayoutDialect layoutDialect() {
+        return new LayoutDialect();
     }
 
     //Подключение Bootstrap

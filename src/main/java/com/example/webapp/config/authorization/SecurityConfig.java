@@ -31,8 +31,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                     .antMatchers("/", "/registration").permitAll()
-                    .antMatchers("/user").hasRole("USER")
-                    .antMatchers("/h2-console/**").permitAll() // Add access to h2 console
+                    .antMatchers("/meeting").hasRole("USER")
+                    .antMatchers("/h2-console/**").permitAll()// Add access to h2 console
+                    .antMatchers("/pooper/**").permitAll()
+                    .antMatchers("/jquery/**").permitAll()
+                    .antMatchers("/bootstrap/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()

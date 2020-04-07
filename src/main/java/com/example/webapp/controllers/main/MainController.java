@@ -42,7 +42,11 @@ public class MainController {
     }
 
     @GetMapping("/meeting")
-    public List<Meeting> showMeeting(@RequestParam ("week") int week) {
-        return reservationService.getMeetingForWeek(week);
+    public ModelAndView showMeeting(@RequestParam ("week") int week) {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Meeting> meetings = reservationService.getMeetingForWeek(week);
+        modelAndView.addObject("meetings", meetings);
+        /*modelAndView.setViewName("meeting");*/
+        return modelAndView;
     }
 }
