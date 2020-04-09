@@ -39,7 +39,7 @@ public class RegistrationController {
 
         if (!personService.savePerson(personForm)) {
             modelAndView.addObject("usernameError", "Пользователь с таким имененем уже существует");
-            modelAndView.setViewName("registrarion");
+            modelAndView.setViewName("registration");
             return modelAndView;
         }
 

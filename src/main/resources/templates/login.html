@@ -1,21 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Welcome</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/core.css}"/>
-</head>
+<head th:insert="/layouts/header :: head"></head>
 <body>
-<h1>Welcome</h1>
-
-<div>
-    <form method="post" action="/login">
+<nav th:replace="/layouts/navbar :: bar(~{:: .collapse})">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!--Добавление кнопок в бар-->
+            <li class="nav-item">
+                <a class="nav-link" href="/registration">Registration</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="auth">
+    <form method="post" th:action="@{/login}">
         <div><input type="text" placeholder="username" name="username"></div>
         <div><input type="password" placeholder="password" name="password"></div>
         <div><input type="submit" value="login"></div>
-
-
     </form>
 </div>
-<h4><a href="/registration">Зарегистрироваться</a></h4>
 </body>

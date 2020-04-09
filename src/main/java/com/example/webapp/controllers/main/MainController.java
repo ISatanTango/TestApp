@@ -41,7 +41,7 @@ public class MainController {
         return "OK";
     }
 
-    @GetMapping("/meeting")
+    @GetMapping("/meetingofweek")
     public ModelAndView showMeeting(@RequestParam ("week") int week) {
         ModelAndView modelAndView = new ModelAndView();
         List<Meeting> meetings = reservationService.getMeetingForWeek(week);

@@ -1,22 +1,41 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Welcome</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/core.css}"/>
-</head>
+<head th:insert="/layouts/header :: head"></head>
 <body>
-<h1>Welcome</h1>
+<nav th:replace="/layouts/navbar :: bar(~{:: .collapse})">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!--Добавление кнопок в бар-->
+            <li class="nav-item active">
+                <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+            </li>
 
-<div>
-    <form method="post" action="/registration" modelAttribute="personForm">
-        <div><input type="text" placeholder="username" name="username"></div>
-        <div><input type="password" placeholder="password" name="password"></div>
-        <div><input type="password" placeholder="confirm password" name="passwordConfirm"></div>
+        </ul>
+    </div>
+</nav>
+
+<div class="auth">
+    <form method="post" th:action="@{/registration}" th:object="${personForm}">
+        <div>
+            <div>
+                <input type="text" placeholder="username" th:field="*{username}">
+            </div>
+            <div>
+                <p th:text="${usernameError}"></p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <input type="password" placeholder="password" th:field="*{password}">
+            </div>
+            <div>
+                <p th:text="${passwordError}"></p>
+            </div>
+        </div>
+        <div><input type="password" placeholder="confirm password" th:field="*{passwordConfirm}"></div>
         <div><input type="submit" value="Reristration"></div>
     </form>
-</div>
-<h4><a href="/login">Войти</a></h4>
-</body>
 
+</div>
+</body>
 </html>

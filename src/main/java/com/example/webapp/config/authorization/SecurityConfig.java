@@ -30,13 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                    .antMatchers("/", "/registration").permitAll()
+                    .antMatchers("/", "/registration", "/h2-console/**").permitAll()
+                    .antMatchers("/webjars/**", "/assets/**").permitAll()
                     .antMatchers("/meeting").hasRole("USER")
-                    .antMatchers("/h2-console/**").permitAll()// Add access to h2 console
-                    .antMatchers("/pooper/**").permitAll()
-                    .antMatchers("/jquery/**").permitAll()
-                    .antMatchers("/bootstrap/**").permitAll()
-                    .anyRequest().authenticated()
+                .anyRequest().authenticated()
                     .and()
                 .formLogin()
                     .defaultSuccessUrl("/", true)
